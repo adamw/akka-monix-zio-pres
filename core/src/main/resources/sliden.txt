@@ -1,0 +1,24 @@
+.___________. __    __       ___      .__   __.  __  ___    
+|           ||  |  |  |     /   \     |  \ |  | |  |/  /    
+`---|  |----`|  |__|  |    /  ^  \    |   \|  | |  '  /     
+    |  |     |   __   |   /  /_\  \   |  . `  | |    <      
+    |  |     |  |  |  |  /  _____  \  |  |\   | |  .  \     
+    |__|     |__|  |__| /__/     \__\ |__| \__| |__|\__\    
+                                                            
+          ____    ____  ______    __    __
+          \   \  /   / /  __  \  |  |  |  |
+           \   \/   / |  |  |  | |  |  |  |
+            \_    _/  |  |  |  | |  |  |  |
+              |  |    |  `--'  | |  `--'  |
+              |__|     \______/   \______/
+
+
+* https://blog.softwaremill.com/scalaz-8-io-vs-akka-typed-actors-vs-monix-part-1-5672657169e1
+
+* https://github.com/adamw/akka-monix-zio-pres
+
+* [Scala Times](http://scalatimes.com)
+
+* [SoftwareMill](http://www.softwaremill.com)
+
+* @adamwarski
