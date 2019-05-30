@@ -1,0 +1,8 @@
+Our example
+-----------
+
+* a number of laser cutters
+* communicate via a connection
+* simple commands
+
+* a coordinator process which assigns command lists to connections

@@ -1,0 +1,16 @@
++---------------------+---------------+--------------------+----------------+
+|       Feautre       |      Akka     |  Monix/cats-effect |       ZIO      |
++---------------------+---------------+--------------------+----------------+
+| Laziness            |  lazy + eager |  lazy              |  lazy          |
+| Type-safety         |  yes          |  yes               |  yes w/ errors |
+| Side effects        |  partial      |  full              |  full          |
+| Lifecycle callbacks |  sync signals |  bracket           |  bracket       |
++---------------------+---------------+--------------------+----------------+
+
+https://ozh.github.io/ascii-tables/
+
+Feautre, Akka, Monix/cats-effect, ZIO
+Laziness, lazy + eager, lazy, lazy
+Type-safety, yes, yes, yes w/ errors
+Side effects, partial, full, full
+Lifecycle callbacks, sync signals, bracket, bracket

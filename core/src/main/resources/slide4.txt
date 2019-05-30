@@ -1,0 +1,10 @@
+What to look at
+---------------
+
+* the API
+  * how does infrastructure code interfere with business code
+  * is the API programmer-friendly?
+
+* if and how description is separated from evaluation
+* what is eager, what is lazy
+* what is a method call, what is reified as a value

@@ -1,0 +1,19 @@
+Bonuses
+-------
+
+Akka
+- persistence
+- clustering
+- remoting
+- streaming
+
+Monix
+- streaming
+- cats integration
+
+ZIO
+- effect tracking
+- STM
+- retries
+- cats integration
+- execution traces

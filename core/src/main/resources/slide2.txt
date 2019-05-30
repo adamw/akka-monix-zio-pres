@@ -1,0 +1,8 @@
+Concurrent programming
+----------------------
+
+* asynchronous processes
+* side effects wrapped in a container (`Future`/`Task`/`IO`/...)
+
+* how to compose processes?
+* how to protect state?
