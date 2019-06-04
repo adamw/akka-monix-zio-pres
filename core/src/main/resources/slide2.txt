@@ -5,4 +5,5 @@ Concurrent programming
 * side effects wrapped in a container (`Future`/`Task`/`IO`/...)
 
 * how to compose processes?
+* how to communicate?
 * how to protect state?

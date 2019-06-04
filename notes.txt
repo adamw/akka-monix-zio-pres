@@ -1,0 +1,63 @@
+
+// 1
+
+  def laserCutterCoordinator(initialConnections: List[DeviceConnection]): Behavior[CoordinatorMsg] = {
+    Behaviors.setup[CoordinatorMsg] { ctx =>
+
+      def next(connections: List[DeviceConnection], waiting: List[Commands], counter: Long): Behavior[CoordinatorMsg] = {
+        (connections, waiting) match {
+          case (connection :: otherConnections, firstWaiting :: otherWaiting) =>
+            println(s"Spawning $counter")
+            val lc = ctx.spawn(laserCutter(ctx.self, firstWaiting, connection), s"lc-$counter")
+            lc ! NextCommand()
+            receive(otherConnections, otherWaiting, counter + 1)
+          case _ =>
+            receive(connections, waiting, counter)
+        }
+      }
+
+      def receive(connections: List[DeviceConnection], waiting: List[Commands], counter: Long): Behavior[CoordinatorMsg] = Behaviors
+        .receiveMessage[CoordinatorMsg] {
+        case ConnectionFree(connection) => next(connection :: connections, waiting, counter)
+        case RunCommands(commands) => next(connections, commands :: waiting, counter)
+      }
+
+      receive(initialConnections, Nil, 0)
+    }
+  }
+
+  //
+
+  sealed trait CoordinatorMsg
+
+  case class ConnectionFree(connection: DeviceConnection) extends CoordinatorMsg
+
+  case class RunCommands(commands: Commands) extends CoordinatorMsg
+
+
+// 2
+
+  val coordinator = ActorSystem(laserCutterCoordinator(List(DeviceConnection("lc1"), DeviceConnection("lc2"))), "hello")
+
+  def main(args: Array[String]): Unit = {
+    coordinator ! RunCommands(List("fw 10", "right 90", "fw 10", "right 90", "fw 10", "right 90"))
+    coordinator ! RunCommands(List("fw 100", "turtle up"))
+    coordinator ! RunCommands(List("bk 1", "bk 1", "bk 1", "bk 1", "bk 1"))
+    coordinator ! RunCommands(List("left 1", "fw 1", "left 1", "fw 1", "left 1", "fw 1", "left 1", "fw 1"))
+  }
+
+-----------
+
+// 2
+
+
+  def main(args: Array[String]): Unit = {
+    new DefaultRuntime {}.unsafeRun(for {
+      r <- coordinator(List(DeviceConnection("lc1"), DeviceConnection("lc2")))
+      _ <- r.inbox.offer(RunCommands(List("fw 10", "right 90", "fw 10", "right 90", "fw 10", "right 90")))
+      _ <- r.inbox.offer(RunCommands(List("fw 100", "turtle up")))
+      _ <- r.inbox.offer(RunCommands(List("bk 1", "bk 1", "bk 1", "bk 1", "bk 1")))
+      _ <- r.inbox.offer(RunCommands(List("left 1", "fw 1", "left 1", "fw 1", "left 1", "fw 1", "left 1", "fw 1")))
+      _ <- r.fiber.join
+    } yield ())
+  }
