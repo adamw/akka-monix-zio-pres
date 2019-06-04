@@ -7,7 +7,7 @@ import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
 import scala.util.{Failure, Success}
 
-object UsingAkka {
+object UsingAkkaComplete {
 
   def laserCutterCoordinator(initialConnections: List[DeviceConnection]): Behavior[CoordinatorMsg] = {
     Behaviors.setup[CoordinatorMsg] { ctx =>

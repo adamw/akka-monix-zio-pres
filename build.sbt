@@ -19,7 +19,7 @@ lazy val core: Project = (project in file("core"))
       "com.typesafe.akka" %% "akka-actor-typed" % akkaVersion,
       "com.typesafe.akka" %% "akka-testkit" % akkaVersion % Test,
       "com.typesafe.akka" %% "akka-actor-testkit-typed" % akkaVersion % Test,
-      "org.scalaz" %% "scalaz-zio" % "1.0-RC4",
+      "org.scalaz" %% "scalaz-zio" % "1.0-RC5",
       "io.monix" %% "monix" % "3.0.0-RC2",
       "ch.qos.logback" % "logback-classic" % "1.2.3",
       "com.typesafe.scala-logging" %% "scala-logging" % "3.9.2",

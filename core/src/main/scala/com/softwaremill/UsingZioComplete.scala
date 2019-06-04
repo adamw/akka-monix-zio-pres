@@ -2,7 +2,7 @@ package com.softwaremill
 
 import scalaz.zio.{DefaultRuntime, Fiber, IO, Queue, UIO}
 
-object UsingZio {
+object UsingZioComplete {
 
   def coordinator(initialConnections: List[DeviceConnection]): IO[Nothing, CoordinatorResult] = {
 
