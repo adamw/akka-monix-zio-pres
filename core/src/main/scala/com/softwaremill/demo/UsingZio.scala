@@ -22,4 +22,15 @@ object UsingZio {
 
   //
 
+  sealed trait CoordinatorMsg
+
+  case class ConnectionFree(connection: DeviceConnection) extends CoordinatorMsg
+
+  case class RunCommands(commands: Commands) extends CoordinatorMsg
+
+  //
+
+  case class CoordinatorResult(inbox: Queue[CoordinatorMsg], fiber: Fiber[Nothing, Unit])
+
+  //
 }

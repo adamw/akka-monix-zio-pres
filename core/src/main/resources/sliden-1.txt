@@ -5,7 +5,7 @@ Akka
 - persistence
 - clustering
 - remoting
-- streaming
+- streams
 
 Monix
 - streaming
